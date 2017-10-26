@@ -1,0 +1,33 @@
+Dependencies for Project 'hello', Target 'hello': (DO NOT MODIFY !)
+F (.\hello.c)(0x5716DA45)(-c --cpu Cortex-M4.fp -D__EVAL -D__MICROLIB -g -O2 --apcs=interwork --split_sections -I..\..\..\.. --c99-I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\Luminary-Drvmdk -DPART_TM4C123GH6PM -DTARGET_IS_TM4C123_RB1-o .\rvmdk\hello.o --omf_browse .\rvmdk\hello.crf --depend .\rvmdk\hello.d)
+I (C:\Keil\ARM\ARMCC\include\stdint.h)(0x51C89844)
+I (C:\Keil\ARM\ARMCC\include\stdbool.h)(0x51C89844)
+I (..\..\..\..\inc/hw_memmap.h)(0x56B2E2A6)
+I (..\..\..\..\inc/hw_types.h)(0x56B2E2A6)
+I (..\..\..\..\driverlib/debug.h)(0x56B2E2A5)
+I (..\..\..\..\driverlib/fpu.h)(0x56B2E2A5)
+I (..\..\..\..\driverlib/gpio.h)(0x56B2E2A5)
+I (..\..\..\..\driverlib/pin_map.h)(0x56B2E2A5)
+I (..\..\..\..\driverlib/rom.h)(0x56B2E2A5)
+I (..\..\..\..\driverlib/sysctl.h)(0x56B2E2A5)
+I (..\..\..\..\driverlib/uart.h)(0x56B2E2A5)
+I (..\..\..\..\utils/uartstdio.h)(0x56B2E2A8)
+I (C:\Keil\ARM\ARMCC\include\stdarg.h)(0x51C89844)
+F (.\startup_rvmdk.S)(0x56B2E2A5)(--cpu Cortex-M4.fp --pd "__EVAL SETA 1" -g --apcs=interwork --pd "__MICROLIB SETA 1"-I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\Luminary-o .\rvmdk\startup_rvmdk.o --depend .\rvmdk\startup_rvmdk.d)
+F (..\..\..\..\utils\uartstdio.c)(0x56B2E2A8)(-c --cpu Cortex-M4.fp -D__EVAL -D__MICROLIB -g -O2 --apcs=interwork --split_sections -I..\..\..\.. --c99-I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\Luminary-Drvmdk -DPART_TM4C123GH6PM -DTARGET_IS_TM4C123_RB1-o .\rvmdk\uartstdio.o --omf_browse .\rvmdk\uartstdio.crf --depend .\rvmdk\uartstdio.d)
+I (C:\Keil\ARM\ARMCC\include\stdbool.h)(0x51C89844)
+I (C:\Keil\ARM\ARMCC\include\stdint.h)(0x51C89844)
+I (C:\Keil\ARM\ARMCC\include\stdarg.h)(0x51C89844)
+I (..\..\..\..\inc/hw_ints.h)(0x56B2E2A6)
+I (..\..\..\..\inc/hw_memmap.h)(0x56B2E2A6)
+I (..\..\..\..\inc/hw_types.h)(0x56B2E2A6)
+I (..\..\..\..\inc/hw_uart.h)(0x56B2E2A6)
+I (..\..\..\..\driverlib/debug.h)(0x56B2E2A5)
+I (..\..\..\..\driverlib/interrupt.h)(0x56B2E2A5)
+I (..\..\..\..\driverlib/rom.h)(0x56B2E2A5)
+I (..\..\..\..\driverlib/rom_map.h)(0x56B2E2A5)
+I (..\..\..\..\driverlib/sysctl.h)(0x56B2E2A5)
+I (..\..\..\..\driverlib/uart.h)(0x56B2E2A5)
+I (..\..\..\..\utils/uartstdio.h)(0x56B2E2A8)
+F (..\..\..\..\driverlib\rvmdk\driverlib.lib)(0x56B2E2A5)()
+F (.\readme.txt)(0x56B2E2A5)()

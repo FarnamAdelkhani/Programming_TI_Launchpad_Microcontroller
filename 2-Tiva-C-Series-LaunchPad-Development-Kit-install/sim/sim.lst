@@ -1,0 +1,243 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000         
+    2 00000000         ;A program to compute the sum, difference, 
+    3 00000000         ;and absolute difference of two signed 
+    4 00000000         ;32-bit numbers.
+    5 00000000         
+    6 00000000         ;------Assembler Directives----------------
+    7 00000000                 THUMB                        ; uses Thumb instru
+                                                            ctions
+    8 00000000         ; Data Variables
+    9 00000000                 AREA             DATA, ALIGN=2 ; places objects 
+                                                            in data memory (RAM
+                                                            )
+   10 00000000                 EXPORT           SUM [DATA,SIZE=4] ; export publ
+                                                            ic varialbe "SUM" f
+                                                            or use elsewhere
+   11 00000000                 EXPORT           DIFF [DATA,SIZE=4] ; export pub
+                                                            lic varialbe "DIFF"
+                                                             for use elsewhere
+   12 00000000                 EXPORT           ABS [DATA,SIZE=4] ; export publ
+                                                            ic varialbe "ABS" f
+                                                            or use elsewhere
+   13 00000000 00 00 00 
+              00       SUM     SPACE            4           ; allocates 4 unini
+                                                            tialized bytes in R
+                                                            AM for SUM
+   14 00000004 00 00 00 
+              00       DIFF    SPACE            4           ; allocates 4 unini
+                                                            tialized bytes in R
+                                                            AM for DIFF
+   15 00000008 00 00 00 
+              00       ABS     SPACE            4           ; allocates 4 unini
+                                                            tialized bytes in R
+                                                            AM for ABS
+   16 0000000C         
+   17 0000000C         ; Code
+   18 0000000C                 AREA             |.text|, CODE, READONLY, ALIGN=
+2 
+                                                            ; code in flash ROM
+                                                            
+   19 00000000                 EXPORT           Start       ; export public fun
+                                                            ction "start" for u
+                                                            se elsewhere
+   20 00000000 FFFFFFFF 
+                       NUM1    DCD              -1          ; 32-bit variable N
+                                                            UM1 = -1
+   21 00000004 00000002 
+                       NUM2    DCD              2           ; 32-bit variable N
+                                                            UM2 = 2
+   22 00000008         ;-------End of Assembler Directives----------
+   23 00000008         
+   24 00000008         
+   25 00000008         GET_SUM                              ; subroutine GET_SU
+                                                            M
+   26 00000008 EB01 0002       ADD              R0, R1, R2  ; R0=R1+R2
+   27 0000000C 4B0A            LDR              R3, =SUM    ; R3=&SUM, R3 point
+                                                            s to SUM
+   28 0000000E 6018            STR              R0, [R3]    ; store the sum of 
+                                                            NUM1 and NUM2 to SU
+                                                            M
+
+
+
+ARM Macro Assembler    Page 2 
+
+
+   29 00000010 4770            BX               LR          ; subroutine return
+                                                            
+   30 00000012         GET_DIFF                             ; subroutine GET_DI
+                                                            FF
+   31 00000012 1A88            SUBS             R0, R1, R2  ; R0=R1-R2
+   32 00000014 4B09            LDR              R3, =DIFF   ; R3=&DIFF, R3 poin
+                                                            ts to DIFF
+   33 00000016 6018            STR              R0, [R3]    ; store the differe
+                                                            nt of NUM1 and NUM2
+                                                             to DIFF
+   34 00000018 D402            BMI              GET_ABS     ; check condition c
+                                                            ode, if N=1 (i.e. t
+                                                            he difference is ne
+                                                            gative), 
+   35 0000001A         ; branch to GET_ABS to calculate the absolute difference
+                       
+   36 0000001A         STR_ABS                              ; label STR_ABS, st
+                                                            ore the absolute di
+                                                            fference
+   37 0000001A 4B09            LDR              R3, =ABS    ; R3=&ABS, R3 point
+                                                            s to ABS
+   38 0000001C 6018            STR              R0, [R3]    ; store the absolut
+                                                            e difference to ABS
+                                                            
+   39 0000001E 4770            BX               LR          ; subroutine return
+                                                            
+   40 00000020         GET_ABS                              ; label GET_ABS, ca
+                                                            lculate the absolut
+                                                            e difference if the
+                                                             difference is nega
+                                                            tive
+   41 00000020 F1C0 0000       RSB              R0, R0, #0  ; R0=0-R0;
+   42 00000024 E7F9            B                STR_ABS     ; branch to STR_ABS
+                                                             to store the resul
+                                                            t
+   43 00000026         
+   44 00000026 F85F 1028 
+                       Start   LDR              R1, NUM1    ; R1=NUM1
+   45 0000002A F85F 2028       LDR              R2, NUM2    ; R2=NUM2
+   46 0000002E F7FF FFEB       BL               GET_SUM
+   47 00000032 F7FF FFEE       BL               GET_DIFF
+   48 00000036         
+   49 00000036 00 00           ALIGN                        ; make sure the end
+                                                             of this section is
+                                                             aligned
+   50 00000038                 END                          ; end of file
+              00000000 
+              00000000 
+              00000000 
+Command Line: --debug --xref --cpu=Cortex-M4.fp --apcs=interwork --depend=.\sim
+.d -o.\sim.o -IC:\Keil\ARM\RV31\INC -IC:\Keil\ARM\CMSIS\Include -IC:\Keil\ARM\I
+nc\TI\TM4C123 --predefine="__EVAL SETA 1" --list=.\sim.lst sim.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+ABS 00000008
+
+Symbol: ABS
+   Definitions
+      At line 15 in file sim.s
+   Uses
+      At line 12 in file sim.s
+      At line 37 in file sim.s
+
+DATA 00000000
+
+Symbol: DATA
+   Definitions
+      At line 9 in file sim.s
+   Uses
+      None
+Comment: DATA unused
+DIFF 00000004
+
+Symbol: DIFF
+   Definitions
+      At line 14 in file sim.s
+   Uses
+      At line 11 in file sim.s
+      At line 32 in file sim.s
+
+SUM 00000000
+
+Symbol: SUM
+   Definitions
+      At line 13 in file sim.s
+   Uses
+      At line 10 in file sim.s
+      At line 27 in file sim.s
+
+4 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+.text 00000000
+
+Symbol: .text
+   Definitions
+      At line 18 in file sim.s
+   Uses
+      None
+Comment: .text unused
+GET_ABS 00000020
+
+Symbol: GET_ABS
+   Definitions
+      At line 40 in file sim.s
+   Uses
+      At line 34 in file sim.s
+Comment: GET_ABS used once
+GET_DIFF 00000012
+
+Symbol: GET_DIFF
+   Definitions
+      At line 30 in file sim.s
+   Uses
+      At line 47 in file sim.s
+Comment: GET_DIFF used once
+GET_SUM 00000008
+
+Symbol: GET_SUM
+   Definitions
+      At line 25 in file sim.s
+   Uses
+      At line 46 in file sim.s
+Comment: GET_SUM used once
+NUM1 00000000
+
+Symbol: NUM1
+   Definitions
+      At line 20 in file sim.s
+   Uses
+      At line 44 in file sim.s
+Comment: NUM1 used once
+NUM2 00000004
+
+Symbol: NUM2
+   Definitions
+      At line 21 in file sim.s
+   Uses
+      At line 45 in file sim.s
+Comment: NUM2 used once
+STR_ABS 0000001A
+
+Symbol: STR_ABS
+   Definitions
+      At line 36 in file sim.s
+   Uses
+      At line 42 in file sim.s
+Comment: STR_ABS used once
+Start 00000026
+
+Symbol: Start
+
+
+
+ARM Macro Assembler    Page 2 Alphabetic symbol ordering
+Relocatable symbols
+
+   Definitions
+      At line 44 in file sim.s
+   Uses
+      At line 19 in file sim.s
+Comment: Start used once
+8 symbols
+346 symbols in table
